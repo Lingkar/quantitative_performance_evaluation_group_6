@@ -10,6 +10,7 @@ training_label_file = "./data/train-labels-idx1-ubyte"
 images = idx2numpy.convert_from_file(training_image_file)
 labels = idx2numpy.convert_from_file(training_label_file)
 
+
 def add_random_duplicates(dataset, labels, percentage):
     dataset_list = dataset.tolist()
     duplicate_amount = math.floor((len(dataset) * percentage / 100))
@@ -58,6 +59,32 @@ def shuffle_data(dataset, labels):
     result_labels = [labels[i] for i in random_indexes]
 
     return np.array(result_dataset), np.array(result_labels)
+
+
+def sp_noise(image, percentage):
+    output = np.zeros(image.shape, np.uint8)
+    treshold = 1 - (percentage/100)
+    for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            rdn = random.random()
+            if rdn < (percentage/100):
+                output[i][j] = 0
+            elif rdn > treshold:
+                output[i][j] = 255
+            else:
+                output[i][j] = image[i][j]
+    return output
+
+
+def add_noise(dataset, dataset_percentage, noise_percentage):
+    result = np.array(dataset, copy=True)
+    image_amount = math.floor((len(dataset) * dataset_percentage / 100))
+    random_indexes = random.sample(range(0, len(dataset)), image_amount)
+
+    for i in random_indexes:
+        result[i] = sp_noise(dataset[i], noise_percentage)
+
+    return result
 
 
 # add 10% random duplicates
@@ -112,6 +139,21 @@ idx2numpy.convert_to_file(shuffled_filenames[0], shuffled_result)
 idx2numpy.convert_to_file(shuffled_filenames[1], shuffled_labels)
 
 for filename in shuffled_filenames:
+    with open(filename, 'rb') as f_in:
+        with gzip.open('%s.gz'%filename, 'wb') as f_out:
+            f_out.writelines(f_in)
+
+
+noise_result = add_noise(images, 20, 2)
+noise_filenames = [
+    "./data/noise/train-images-idx3-ubyte",
+    "./data/noise/train-labels-idx1-ubyte"
+]
+
+idx2numpy.convert_to_file(noise_filenames[0], noise_result)
+idx2numpy.convert_to_file(noise_filenames[1], labels)
+
+for filename in noise_filenames:
     with open(filename, 'rb') as f_in:
         with gzip.open('%s.gz'%filename, 'wb') as f_out:
             f_out.writelines(f_in)
