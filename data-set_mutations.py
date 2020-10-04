@@ -10,7 +10,6 @@ training_label_file = "./data/train-labels-idx1-ubyte"
 images = idx2numpy.convert_from_file(training_image_file)
 labels = idx2numpy.convert_from_file(training_label_file)
 
-
 def add_random_duplicates(dataset, labels, percentage):
     dataset_list = dataset.tolist()
     duplicate_amount = math.floor((len(dataset) * percentage / 100))
@@ -53,6 +52,14 @@ def introduce_label_errors(input_labels, percentage):
     return labels
 
 
+def shuffle_data(dataset, labels):
+    random_indexes = random.sample(range(0, len(dataset)), len(dataset))
+    result_dataset = [dataset[i] for i in random_indexes]
+    result_labels = [labels[i] for i in random_indexes]
+
+    return np.array(result_dataset), np.array(result_labels)
+
+
 # add 10% random duplicates
 dup_result, dup_labels = add_random_duplicates(images, labels, 10)
 dup_filenames = [
@@ -85,7 +92,7 @@ for filename in shrinked_filenames:
 
 
 # Introduce 10% label errors
-erroneous_labels = introduce_label_errors(labels,10)
+erroneous_labels = introduce_label_errors(labels, 10)
 erroneous_labels_name = "./data/label_errors/train-labels-idx1-ubyte"
 
 idx2numpy.convert_to_file(erroneous_labels_name, erroneous_labels)
@@ -95,3 +102,16 @@ with open(erroneous_labels_name, 'rb') as f_in:
         f_out.writelines(f_in)
 
 
+shuffled_result, shuffled_labels = shuffle_data(images, labels)
+shuffled_filenames = [
+    "./data/shuffled/train-images-idx3-ubyte",
+    "./data/shuffled/train-labels-idx1-ubyte"
+]
+
+idx2numpy.convert_to_file(shuffled_filenames[0], shuffled_result)
+idx2numpy.convert_to_file(shuffled_filenames[1], shuffled_labels)
+
+for filename in shuffled_filenames:
+    with open(filename, 'rb') as f_in:
+        with gzip.open('%s.gz'%filename, 'wb') as f_out:
+            f_out.writelines(f_in)
