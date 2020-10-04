@@ -10,15 +10,16 @@ training_label_file = "./data/train-labels-idx1-ubyte"
 images = idx2numpy.convert_from_file(training_image_file)
 labels = idx2numpy.convert_from_file(training_label_file)
 
+
 def add_random_duplicates(dataset, labels, percentage):
+    dataset_list = dataset.tolist()
     duplicate_amount = math.floor((len(dataset) * percentage / 100))
     random_indexes = random.sample(range(0, len(dataset)), duplicate_amount)
     dup_values = [dataset[i] for i in random_indexes]
     dup_labels = [labels[i] for i in random_indexes]
 
-    result = np.append(dataset, dup_values)
-    labels = np.append(labels, dup_labels)
-        
+    result = np.append(dataset, dup_values, axis=0)
+    labels = np.append(labels, dup_labels, axis=0)
 
     return result, labels
 
@@ -58,7 +59,6 @@ dup_filenames = [
     "./data/random_duplicates/train-images-idx3-ubyte",
     "./data/random_duplicates/train-labels-idx1-ubyte"
 ]
-
 idx2numpy.convert_to_file(dup_filenames[0], dup_result)
 idx2numpy.convert_to_file(dup_filenames[1], dup_labels)
 
@@ -68,7 +68,7 @@ for filename in dup_filenames:
             f_out.writelines(f_in)
 
 
-# delete 10% random samples 
+# delete 10% random samples
 shrinked_result, shrinked_labels = delete_random_samples(images, labels, 10)
 shrinked_filenames = [
     "./data/delete_random_samples/train-images-idx3-ubyte",
