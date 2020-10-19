@@ -3,6 +3,7 @@ import idx2numpy
 import math
 import random
 import gzip
+import os
 
 training_image_file = "./data/train-images-idx3-ubyte"
 training_label_file = "./data/train-labels-idx1-ubyte"
@@ -87,73 +88,100 @@ def add_noise(dataset, dataset_percentage, noise_percentage):
     return result
 
 
+# Create all the datasets for the experiments
+label_errors_amount = [0, 20, 40]
+image_noise_amount = [0, 20, 40]
+
+for re in range(2, 6):
+    for le in label_errors_amount:
+        for ni in image_noise_amount:
+            directory = "./data/experiments/repetition_" + str(re) + "/le_" + str(le) + "_in_" + str(ni) + "/"
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            filenames = [directory + "train-images-idx3-ubyte", directory + "train-labels-idx1-ubyte"]
+
+            erroneous_labels = introduce_label_errors(labels, le)
+            noisy_images = add_noise(images, ni, 20)
+
+            idx2numpy.convert_to_file(filenames[0], noisy_images)
+            idx2numpy.convert_to_file(filenames[1], erroneous_labels)
+
+            for filename in filenames:
+                with open(filename, 'rb') as f_in:
+                    with gzip.open('%s.gz'%filename, 'wb') as f_out:
+                        f_out.writelines(f_in)
+            print("Done with label_error: " + str(le) + ", and image_noise: " + str(ni))
+    print("Done with repetition: " + str(re))
+
+
+
 # add 10% random duplicates
-dup_result, dup_labels = add_random_duplicates(images, labels, 10)
-dup_filenames = [
-    "./data/random_duplicates/train-images-idx3-ubyte",
-    "./data/random_duplicates/train-labels-idx1-ubyte"
-]
-idx2numpy.convert_to_file(dup_filenames[0], dup_result)
-idx2numpy.convert_to_file(dup_filenames[1], dup_labels)
-
-for filename in dup_filenames:
-    with open(filename, 'rb') as f_in:
-        with gzip.open('%s.gz'%filename, 'wb') as f_out:
-            f_out.writelines(f_in)
-
-
-# delete 10% random samples
-shrinked_result, shrinked_labels = delete_random_samples(images, labels, 10)
-shrinked_filenames = [
-    "./data/delete_random_samples/train-images-idx3-ubyte",
-    "./data/delete_random_samples/train-labels-idx1-ubyte"
-]
-
-idx2numpy.convert_to_file(shrinked_filenames[0], shrinked_result)
-idx2numpy.convert_to_file(shrinked_filenames[1], shrinked_labels)
-
-for filename in shrinked_filenames:
-    with open(filename, 'rb') as f_in:
-        with gzip.open('%s.gz'%filename, 'wb') as f_out:
-            f_out.writelines(f_in)
-
-
-# Introduce 10% label errors
-erroneous_labels = introduce_label_errors(labels, 10)
-erroneous_labels_name = "./data/label_errors/train-labels-idx1-ubyte"
-
-idx2numpy.convert_to_file(erroneous_labels_name, erroneous_labels)
-
-with open(erroneous_labels_name, 'rb') as f_in:
-    with gzip.open('%s.gz'%erroneous_labels_name, 'wb') as f_out:
-        f_out.writelines(f_in)
-
-
-shuffled_result, shuffled_labels = shuffle_data(images, labels)
-shuffled_filenames = [
-    "./data/shuffled/train-images-idx3-ubyte",
-    "./data/shuffled/train-labels-idx1-ubyte"
-]
-
-idx2numpy.convert_to_file(shuffled_filenames[0], shuffled_result)
-idx2numpy.convert_to_file(shuffled_filenames[1], shuffled_labels)
-
-for filename in shuffled_filenames:
-    with open(filename, 'rb') as f_in:
-        with gzip.open('%s.gz'%filename, 'wb') as f_out:
-            f_out.writelines(f_in)
-
-
-noise_result = add_noise(images, 20, 2)
-noise_filenames = [
-    "./data/noise/train-images-idx3-ubyte",
-    "./data/noise/train-labels-idx1-ubyte"
-]
-
-idx2numpy.convert_to_file(noise_filenames[0], noise_result)
-idx2numpy.convert_to_file(noise_filenames[1], labels)
-
-for filename in noise_filenames:
-    with open(filename, 'rb') as f_in:
-        with gzip.open('%s.gz'%filename, 'wb') as f_out:
-            f_out.writelines(f_in)
+# dup_result, dup_labels = add_random_duplicates(images, labels, 10)
+# dup_filenames = [
+#     "./data/random_duplicates/train-images-idx3-ubyte",
+#     "./data/random_duplicates/train-labels-idx1-ubyte"
+# ]
+# idx2numpy.convert_to_file(dup_filenames[0], dup_result)
+# idx2numpy.convert_to_file(dup_filenames[1], dup_labels)
+#
+# for filename in dup_filenames:
+#     with open(filename, 'rb') as f_in:
+#         with gzip.open('%s.gz'%filename, 'wb') as f_out:
+#             f_out.writelines(f_in)
+#
+#
+# # delete 10% random samples
+# shrinked_result, shrinked_labels = delete_random_samples(images, labels, 10)
+# shrinked_filenames = [
+#     "./data/delete_random_samples/train-images-idx3-ubyte",
+#     "./data/delete_random_samples/train-labels-idx1-ubyte"
+# ]
+#
+# idx2numpy.convert_to_file(shrinked_filenames[0], shrinked_result)
+# idx2numpy.convert_to_file(shrinked_filenames[1], shrinked_labels)
+#
+# for filename in shrinked_filenames:
+#     with open(filename, 'rb') as f_in:
+#         with gzip.open('%s.gz'%filename, 'wb') as f_out:
+#             f_out.writelines(f_in)
+#
+#
+# # Introduce 10% label errors
+# erroneous_labels = introduce_label_errors(labels, 10)
+# erroneous_labels_name = "./data/label_errors/train-labels-idx1-ubyte"
+#
+# idx2numpy.convert_to_file(erroneous_labels_name, erroneous_labels)
+#
+# with open(erroneous_labels_name, 'rb') as f_in:
+#     with gzip.open('%s.gz'%erroneous_labels_name, 'wb') as f_out:
+#         f_out.writelines(f_in)
+#
+#
+# shuffled_result, shuffled_labels = shuffle_data(images, labels)
+# shuffled_filenames = [
+#     "./data/shuffled/train-images-idx3-ubyte",
+#     "./data/shuffled/train-labels-idx1-ubyte"
+# ]
+#
+# idx2numpy.convert_to_file(shuffled_filenames[0], shuffled_result)
+# idx2numpy.convert_to_file(shuffled_filenames[1], shuffled_labels)
+#
+# for filename in shuffled_filenames:
+#     with open(filename, 'rb') as f_in:
+#         with gzip.open('%s.gz'%filename, 'wb') as f_out:
+#             f_out.writelines(f_in)
+#
+#
+# noise_result = add_noise(images, 20, 2)
+# noise_filenames = [
+#     "./data/noise/train-images-idx3-ubyte",
+#     "./data/noise/train-labels-idx1-ubyte"
+# ]
+#
+# idx2numpy.convert_to_file(noise_filenames[0], noise_result)
+# idx2numpy.convert_to_file(noise_filenames[1], labels)
+#
+# for filename in noise_filenames:
+#     with open(filename, 'rb') as f_in:
+#         with gzip.open('%s.gz'%filename, 'wb') as f_out:
+#             f_out.writelines(f_in)
