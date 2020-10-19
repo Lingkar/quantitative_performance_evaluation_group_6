@@ -90,7 +90,7 @@ if __name__ == "__main__":
                                         app_name="lenet5"+dt.datetime.now().strftime("%Y%m%d-%H%M%S"))
         optimizer.set_train_summary(train_summary_instance)
         optimizer.set_val_summary(val_summary_instance)
-        print ("saving logs to ",app_name)
+        print ("saving logs to ","lenet5"+dt.datetime.now().strftime("%Y%m%d-%H%M%S"))
        
         #convert the useful results to array format
         train_loss = np.array(train_summary_instance.read_scalar("Loss"))
