@@ -8,3 +8,9 @@ data/t10k-labels-idx1-ubyte
 data/train-images-idx3-ubyte
 
 data/train-labels-idx1-ubyte
+
+*.log
+
+/**/*.log
+
+run/bigdl.log
