@@ -1,5 +1,0 @@
-job 0 = 10 epochs
-job 1 = label errors
-job 2 = random duplicates
-job 17 = default parameters
-job 8 = delete random samples
