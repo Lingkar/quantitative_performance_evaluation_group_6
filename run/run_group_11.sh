@@ -1,5 +1,5 @@
 #/!/bin/bash
-for rep in 1 #2 3 4 5
+for rep in 1 2 3 4 5
 do
 for le in 0 20 40
 do
