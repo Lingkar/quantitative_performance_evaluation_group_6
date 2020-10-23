@@ -1,0 +1,212 @@
+2020-10-23 10:11:55 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2020-10-23 10:11:57 INFO  SparkContext:54 - Running Spark version 2.3.1
+2020-10-23 10:11:57 INFO  SparkContext:54 - Submitted application: lenet5
+2020-10-23 10:11:57 INFO  SecurityManager:54 - Changing view acls to: buijnstersjan
+2020-10-23 10:11:57 INFO  SecurityManager:54 - Changing modify acls to: buijnstersjan
+2020-10-23 10:11:57 INFO  SecurityManager:54 - Changing view acls groups to: 
+2020-10-23 10:11:57 INFO  SecurityManager:54 - Changing modify acls groups to: 
+2020-10-23 10:11:57 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(buijnstersjan); groups with view permissions: Set(); users  with modify permissions: Set(buijnstersjan); groups with modify permissions: Set()
+2020-10-23 10:11:57 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 38873.
+2020-10-23 10:11:57 INFO  SparkEnv:54 - Registering MapOutputTracker
+2020-10-23 10:11:57 INFO  SparkEnv:54 - Registering BlockManagerMaster
+2020-10-23 10:11:57 INFO  BlockManagerMasterEndpoint:54 - Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2020-10-23 10:11:57 INFO  BlockManagerMasterEndpoint:54 - BlockManagerMasterEndpoint up
+2020-10-23 10:11:57 INFO  DiskBlockManager:54 - Created local directory at /tmp/blockmgr-0992f183-dbe7-46ce-a745-a6da6d077b9d
+2020-10-23 10:11:57 INFO  MemoryStore:54 - MemoryStore started with capacity 366.3 MB
+2020-10-23 10:11:57 INFO  SparkEnv:54 - Registering OutputCommitCoordinator
+2020-10-23 10:11:57 INFO  log:192 - Logging initialized @3257ms
+2020-10-23 10:11:57 INFO  Server:346 - jetty-9.3.z-SNAPSHOT
+2020-10-23 10:11:57 INFO  Server:414 - Started @3363ms
+2020-10-23 10:11:57 INFO  AbstractConnector:278 - Started ServerConnector@67ac0457{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2020-10-23 10:11:57 INFO  Utils:54 - Successfully started service 'SparkUI' on port 4040.
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@21221623{/jobs,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@141a66c7{/jobs/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5f1814ad{/jobs/job,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@60493423{/jobs/job/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@27a24ab3{/stages,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@38009f96{/stages/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3259305{/stages/stage,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@23e6b71e{/stages/stage/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@c74b5dc{/stages/pool,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@423cc1b{/stages/pool/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@28933f23{/storage,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3edb3368{/storage/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@17a8ab3a{/storage/rdd,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@df1fec0{/storage/rdd/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3caab27a{/environment,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5b8d86f4{/environment/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@92e07c4{/executors,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@babffdf{/executors/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@62fbb5b2{/executors/threadDump,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5576353f{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2c1f1872{/static,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@739c8c5c{/,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5d0495e0{/api,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@214c4e04{/jobs/job/kill,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@3758502f{/stages/stage/kill,null,AVAILABLE,@Spark}
+2020-10-23 10:11:57 INFO  SparkUI:54 - Bound SparkUI to 0.0.0.0, and started at http://bigdl.europe-west4-a.c.massive-network-289210.internal:4040
+2020-10-23 10:11:58 INFO  SparkContext:54 - Added JAR file:///home/am72ghiassi/bd/spark/lib/bigdl-SPARK_2.3-0.11.0-jar-with-dependencies.jar at spark://bigdl.europe-west4-a.c.massive-network-289210.internal:38873/jars/bigdl-SPARK_2.3-0.11.0-jar-with-dependencies.jar with timestamp 1603447918119
+2020-10-23 10:11:58 INFO  SparkContext:54 - Added file file:/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py at spark://bigdl.europe-west4-a.c.massive-network-289210.internal:38873/files/lenet5.py with timestamp 1603447918157
+2020-10-23 10:11:58 INFO  Utils:54 - Copying /home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py to /tmp/spark-980bd390-4df5-4de5-bdb7-3bdeb5fa68e7/userFiles-8a114898-b6ca-4a3d-9cfe-9685e2c3f720/lenet5.py
+2020-10-23 10:11:58 INFO  SparkContext:54 - Added file file:///home/am72ghiassi/bd/spark/lib/bigdl-0.11.0-python-api.zip at spark://bigdl.europe-west4-a.c.massive-network-289210.internal:38873/files/bigdl-0.11.0-python-api.zip with timestamp 1603447918172
+2020-10-23 10:11:58 INFO  Utils:54 - Copying /home/am72ghiassi/bd/spark/lib/bigdl-0.11.0-python-api.zip to /tmp/spark-980bd390-4df5-4de5-bdb7-3bdeb5fa68e7/userFiles-8a114898-b6ca-4a3d-9cfe-9685e2c3f720/bigdl-0.11.0-python-api.zip
+2020-10-23 10:11:58 INFO  StandaloneAppClient$ClientEndpoint:54 - Connecting to master spark://10.164.0.2:7077...
+2020-10-23 10:11:58 INFO  TransportClientFactory:267 - Successfully created connection to /10.164.0.2:7077 after 41 ms (0 ms spent in bootstraps)
+2020-10-23 10:11:58 INFO  StandaloneSchedulerBackend:54 - Connected to Spark cluster with app ID app-20201023101158-0063
+2020-10-23 10:11:58 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor added: app-20201023101158-0063/0 on worker-20201022163533-10.164.0.3-37685 (10.164.0.3:37685) with 2 core(s)
+2020-10-23 10:11:58 INFO  StandaloneSchedulerBackend:54 - Granted executor ID app-20201023101158-0063/0 on hostPort 10.164.0.3:37685 with 2 core(s), 1024.0 MB RAM
+2020-10-23 10:11:58 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor added: app-20201023101158-0063/1 on worker-20201022163611-10.164.0.4-33289 (10.164.0.4:33289) with 2 core(s)
+2020-10-23 10:11:58 INFO  StandaloneSchedulerBackend:54 - Granted executor ID app-20201023101158-0063/1 on hostPort 10.164.0.4:33289 with 2 core(s), 1024.0 MB RAM
+2020-10-23 10:11:58 INFO  Utils:54 - Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 34649.
+2020-10-23 10:11:58 INFO  NettyBlockTransferService:54 - Server created on bigdl.europe-west4-a.c.massive-network-289210.internal:34649
+2020-10-23 10:11:58 INFO  BlockManager:54 - Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2020-10-23 10:11:58 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor updated: app-20201023101158-0063/1 is now RUNNING
+2020-10-23 10:11:58 INFO  StandaloneAppClient$ClientEndpoint:54 - Executor updated: app-20201023101158-0063/0 is now RUNNING
+2020-10-23 10:11:58 INFO  BlockManagerMaster:54 - Registering BlockManager BlockManagerId(driver, bigdl.europe-west4-a.c.massive-network-289210.internal, 34649, None)
+2020-10-23 10:11:58 INFO  BlockManagerMasterEndpoint:54 - Registering block manager bigdl.europe-west4-a.c.massive-network-289210.internal:34649 with 366.3 MB RAM, BlockManagerId(driver, bigdl.europe-west4-a.c.massive-network-289210.internal, 34649, None)
+2020-10-23 10:11:58 INFO  BlockManagerMaster:54 - Registered BlockManager BlockManagerId(driver, bigdl.europe-west4-a.c.massive-network-289210.internal, 34649, None)
+2020-10-23 10:11:58 INFO  BlockManager:54 - Initialized BlockManager: BlockManagerId(driver, bigdl.europe-west4-a.c.massive-network-289210.internal, 34649, None)
+2020-10-23 10:11:58 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@7e5510b3{/metrics/json,null,AVAILABLE,@Spark}
+2020-10-23 10:12:00 INFO  CoarseGrainedSchedulerBackend$DriverEndpoint:54 - Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.164.0.3:43968) with ID 0
+2020-10-23 10:12:01 INFO  CoarseGrainedSchedulerBackend$DriverEndpoint:54 - Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.164.0.4:42286) with ID 1
+2020-10-23 10:12:01 INFO  StandaloneSchedulerBackend:54 - SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 1.0
+2020-10-23 10:12:01 INFO  BlockManagerMasterEndpoint:54 - Registering block manager 10.164.0.3:34837 with 366.3 MB RAM, BlockManagerId(0, 10.164.0.3, 34837, None)
+2020-10-23 10:12:01 INFO  BlockManagerMasterEndpoint:54 - Registering block manager 10.164.0.4:35115 with 366.3 MB RAM, BlockManagerId(1, 10.164.0.4, 35115, None)
+2020-10-23 10:12:01 INFO  Engine$:121 - Auto detect executor number and executor cores number
+2020-10-23 10:12:01 INFO  Engine$:123 - Executor number is 2 and executor cores number is 2
+2020-10-23 10:12:04 INFO  ThreadPool$:95 - Set mkl threads to 1 on thread 17
+2020-10-23 10:12:04 INFO  Engine$:446 - Find existing spark context. Checking the spark conf...
+cls.getname: com.intel.analytics.bigdl.python.api.Sample
+BigDLBasePickler registering: bigdl.util.common  Sample
+cls.getname: com.intel.analytics.bigdl.python.api.EvaluatedResult
+BigDLBasePickler registering: bigdl.util.common  EvaluatedResult
+cls.getname: com.intel.analytics.bigdl.python.api.JTensor
+BigDLBasePickler registering: bigdl.util.common  JTensor
+cls.getname: com.intel.analytics.bigdl.python.api.JActivity
+BigDLBasePickler registering: bigdl.util.common  JActivity
+0.01
+('Extracting', '/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/data/experiments/repetition_5/le_20_in_40/train-images-idx3-ubyte.gz')
+('Extracting', '/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/data/experiments/repetition_5/le_20_in_40/train-labels-idx1-ubyte.gz')
+('Extracting', '/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/data/experiments/repetition_5/le_20_in_40/t10k-images-idx3-ubyte.gz')
+('Extracting', '/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/data/experiments/repetition_5/le_20_in_40/t10k-labels-idx1-ubyte.gz')
+creating: createSequential
+creating: createReshape
+creating: createSpatialConvolution
+creating: createTanh
+creating: createSpatialMaxPooling
+creating: createSpatialConvolution
+creating: createTanh
+creating: createSpatialMaxPooling
+creating: createReshape
+creating: createLinear
+creating: createTanh
+creating: createLinear
+creating: createLogSoftMax
+creating: createClassNLLCriterion
+creating: createDefault
+creating: createSGD
+creating: createMaxEpoch
+creating: createDistriOptimizer
+disableCheckSingleton is deprecated. Please use bigdl.check.singleton instead
+creating: createEveryEpoch
+creating: createTop1Accuracy
+creating: createEveryEpoch
+creating: createTrainSummary
+creating: createValidationSummary
+('saving logs to ', 'lenet520201023-101205')
+2020-10-23 10:12:06 INFO  DistriOptimizer$:808 - caching training rdd ...
+2020-10-23 10:12:10 ERROR TaskSetManager:70 - Task 1 in stage 0.0 failed 4 times; aborting job
+Traceback (most recent call last):
+  File "/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py", line 94, in <module>
+    trained_model = optimizer.optimize()
+  File "/home/am72ghiassi/bd/spark/lib/bigdl-0.11.0-python-api.zip/bigdl/optim/optimizer.py", line 790, in optimize
+  File "/home/am72ghiassi/bd/spark/lib/bigdl-0.11.0-python-api.zip/bigdl/util/common.py", line 645, in callJavaFunc
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o109.optimize.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 1 in stage 0.0 failed 4 times, most recent failure: Lost task 1.3 in stage 0.0 (TID 9, 10.164.0.3, executor 0): java.nio.file.FileSystemException: /tmp/spark-09215a4c-5015-4ef0-9e82-67be9901513e/executor-bb9e86ed-c683-4e79-a4a1-bfc625e82d12/spark-d998faeb-4c49-4193-b1d4-28baa68aaec0/13456352211603447918119_cache -> ./bigdl-SPARK_2.3-0.11.0-jar-with-dependencies.jar: No space left on device
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:91)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+	at sun.nio.fs.UnixCopyFile.copyFile(UnixCopyFile.java:253)
+	at sun.nio.fs.UnixCopyFile.copy(UnixCopyFile.java:581)
+	at sun.nio.fs.UnixFileSystemProvider.copy(UnixFileSystemProvider.java:253)
+	at java.nio.file.Files.copy(Files.java:1274)
+	at org.apache.spark.util.Utils$.org$apache$spark$util$Utils$$copyRecursive(Utils.scala:635)
+	at org.apache.spark.util.Utils$.copyFile(Utils.scala:606)
+	at org.apache.spark.util.Utils$.fetchFile(Utils.scala:481)
+	at org.apache.spark.executor.Executor$$anonfun$org$apache$spark$executor$Executor$$updateDependencies$5.apply(Executor.scala:755)
+	at org.apache.spark.executor.Executor$$anonfun$org$apache$spark$executor$Executor$$updateDependencies$5.apply(Executor.scala:747)
+	at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:733)
+	at scala.collection.mutable.HashMap$$anonfun$foreach$1.apply(HashMap.scala:99)
+	at scala.collection.mutable.HashMap$$anonfun$foreach$1.apply(HashMap.scala:99)
+	at scala.collection.mutable.HashTable$class.foreachEntry(HashTable.scala:230)
+	at scala.collection.mutable.HashMap.foreachEntry(HashMap.scala:40)
+	at scala.collection.mutable.HashMap.foreach(HashMap.scala:99)
+	at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:732)
+	at org.apache.spark.executor.Executor.org$apache$spark$executor$Executor$$updateDependencies(Executor.scala:747)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:312)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1602)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1590)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1589)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:1589)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:831)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:831)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:831)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:1823)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1772)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1761)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:48)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:642)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2034)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2055)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2074)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2099)
+	at org.apache.spark.rdd.RDD.count(RDD.scala:1162)
+	at com.intel.analytics.bigdl.dataset.DistributedDataSet$$anon$5.cache(DataSet.scala:195)
+	at com.intel.analytics.bigdl.optim.AbstractOptimizer.prepareInput(AbstractOptimizer.scala:281)
+	at com.intel.analytics.bigdl.optim.DistriOptimizer.prepareInput(DistriOptimizer.scala:809)
+	at com.intel.analytics.bigdl.optim.DistriOptimizer.optimize(DistriOptimizer.scala:869)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.nio.file.FileSystemException: /tmp/spark-09215a4c-5015-4ef0-9e82-67be9901513e/executor-bb9e86ed-c683-4e79-a4a1-bfc625e82d12/spark-d998faeb-4c49-4193-b1d4-28baa68aaec0/13456352211603447918119_cache -> ./bigdl-SPARK_2.3-0.11.0-jar-with-dependencies.jar: No space left on device
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:91)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+	at sun.nio.fs.UnixCopyFile.copyFile(UnixCopyFile.java:253)
+	at sun.nio.fs.UnixCopyFile.copy(UnixCopyFile.java:581)
+	at sun.nio.fs.UnixFileSystemProvider.copy(UnixFileSystemProvider.java:253)
+	at java.nio.file.Files.copy(Files.java:1274)
+	at org.apache.spark.util.Utils$.org$apache$spark$util$Utils$$copyRecursive(Utils.scala:635)
+	at org.apache.spark.util.Utils$.copyFile(Utils.scala:606)
+	at org.apache.spark.util.Utils$.fetchFile(Utils.scala:481)
+	at org.apache.spark.executor.Executor$$anonfun$org$apache$spark$executor$Executor$$updateDependencies$5.apply(Executor.scala:755)
+	at org.apache.spark.executor.Executor$$anonfun$org$apache$spark$executor$Executor$$updateDependencies$5.apply(Executor.scala:747)
+	at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:733)
+	at scala.collection.mutable.HashMap$$anonfun$foreach$1.apply(HashMap.scala:99)
+	at scala.collection.mutable.HashMap$$anonfun$foreach$1.apply(HashMap.scala:99)
+	at scala.collection.mutable.HashTable$class.foreachEntry(HashTable.scala:230)
+	at scala.collection.mutable.HashMap.foreachEntry(HashMap.scala:40)
+	at scala.collection.mutable.HashMap.foreach(HashMap.scala:99)
+	at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:732)
+	at org.apache.spark.executor.Executor.org$apache$spark$executor$Executor$$updateDependencies(Executor.scala:747)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:312)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+

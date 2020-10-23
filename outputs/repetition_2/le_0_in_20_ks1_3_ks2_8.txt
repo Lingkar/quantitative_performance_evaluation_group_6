@@ -1,0 +1,24 @@
+2020-10-22 16:53:19 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2020-10-22 16:53:20 INFO  SparkContext:54 - Running Spark version 2.3.1
+2020-10-22 16:53:20 INFO  SparkContext:54 - Submitted application: lenet5
+2020-10-22 16:53:20 INFO  SecurityManager:54 - Changing view acls to: buijnstersjan
+2020-10-22 16:53:20 INFO  SecurityManager:54 - Changing modify acls to: buijnstersjan
+2020-10-22 16:53:20 INFO  SecurityManager:54 - Changing view acls groups to: 
+2020-10-22 16:53:20 INFO  SecurityManager:54 - Changing modify acls groups to: 
+2020-10-22 16:53:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(buijnstersjan); groups with view permissions: Set(); users  with modify permissions: Set(buijnstersjan); groups with modify permissions: Set()
+Traceback (most recent call last):
+  File "/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py", line 66, in <module>
+    sc = SparkContext(appName="lenet5", conf=create_spark_conf())
+  File "/home/am72ghiassi/bd/spark/python/lib/pyspark.zip/pyspark/context.py", line 118, in __init__
+  File "/home/am72ghiassi/bd/spark/python/lib/pyspark.zip/pyspark/context.py", line 180, in _do_init
+  File "/home/am72ghiassi/bd/spark/python/lib/pyspark.zip/pyspark/context.py", line 282, in _initialize_context
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1523, in __call__
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 985, in send_command
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1152, in send_command
+  File "/usr/lib/python2.7/socket.py", line 451, in readline
+    data = self._sock.recv(self._rbufsize)
+KeyboardInterrupt
+2020-10-22 16:53:21 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 35733.
+2020-10-22 16:53:21 INFO  ShutdownHookManager:54 - Shutdown hook called
+2020-10-22 16:53:21 INFO  ShutdownHookManager:54 - Deleting directory /tmp/spark-308935a4-d952-4fe1-83af-d81865717195
+2020-10-22 16:53:21 INFO  ShutdownHookManager:54 - Deleting directory /tmp/localPyFiles-df18fc27-0b54-4c08-b4a1-f0fe2b013340

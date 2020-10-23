@@ -1,0 +1,154 @@
+2020-10-22 16:53:15 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2020-10-22 16:53:16 INFO  SparkContext:54 - Running Spark version 2.3.1
+2020-10-22 16:53:16 INFO  SparkContext:54 - Submitted application: lenet5
+2020-10-22 16:53:16 INFO  SecurityManager:54 - Changing view acls to: buijnstersjan
+2020-10-22 16:53:16 INFO  SecurityManager:54 - Changing modify acls to: buijnstersjan
+2020-10-22 16:53:16 INFO  SecurityManager:54 - Changing view acls groups to: 
+2020-10-22 16:53:16 INFO  SecurityManager:54 - Changing modify acls groups to: 
+2020-10-22 16:53:16 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(buijnstersjan); groups with view permissions: Set(); users  with modify permissions: Set(buijnstersjan); groups with modify permissions: Set()
+2020-10-22 16:53:16 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 35833.
+2020-10-22 16:53:17 INFO  SparkEnv:54 - Registering MapOutputTracker
+2020-10-22 16:53:17 INFO  SparkEnv:54 - Registering BlockManagerMaster
+2020-10-22 16:53:17 INFO  BlockManagerMasterEndpoint:54 - Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2020-10-22 16:53:17 INFO  BlockManagerMasterEndpoint:54 - BlockManagerMasterEndpoint up
+2020-10-22 16:53:17 INFO  DiskBlockManager:54 - Created local directory at /tmp/blockmgr-5d63d6b0-9be2-42fa-80d2-4c4465646566
+2020-10-22 16:53:17 INFO  MemoryStore:54 - MemoryStore started with capacity 366.3 MB
+2020-10-22 16:53:17 INFO  SparkEnv:54 - Registering OutputCommitCoordinator
+2020-10-22 16:53:17 INFO  log:192 - Logging initialized @3204ms
+2020-10-22 16:53:17 INFO  Server:346 - jetty-9.3.z-SNAPSHOT
+2020-10-22 16:53:17 INFO  Server:414 - Started @3347ms
+2020-10-22 16:53:17 INFO  AbstractConnector:278 - Started ServerConnector@67830fe3{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2020-10-22 16:53:17 INFO  Utils:54 - Successfully started service 'SparkUI' on port 4040.
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@58a2e3ce{/jobs,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2897dda7{/jobs/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@cbc6a7b{/jobs/job,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@375e9b6{/jobs/job/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1599669a{/stages,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@7a1939e0{/stages/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2a186e4a{/stages/stage,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@6b1af5dd{/stages/stage/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@219bcca{/stages/pool,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@64245d45{/stages/pool/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@4473ef83{/storage,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@78fb5ecd{/storage/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@374b52f4{/storage/rdd,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@71c3ff2d{/storage/rdd/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@2a971961{/environment,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@8b837c8{/environment/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@658908d9{/executors,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@b5da9d2{/executors/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1913f5c9{/executors/threadDump,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@505c9754{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@7dbe8246{/static,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@47707810{/,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@5c7cc4f3{/api,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@1183e3e6{/jobs/job/kill,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  ContextHandler:781 - Started o.s.j.s.ServletContextHandler@20abf0a1{/stages/stage/kill,null,AVAILABLE,@Spark}
+2020-10-22 16:53:17 INFO  SparkUI:54 - Bound SparkUI to 0.0.0.0, and started at http://bigdl.europe-west4-a.c.massive-network-289210.internal:4040
+2020-10-22 16:53:17 INFO  SparkContext:54 - Added JAR file:///home/am72ghiassi/bd/spark/lib/bigdl-SPARK_2.3-0.11.0-jar-with-dependencies.jar at spark://bigdl.europe-west4-a.c.massive-network-289210.internal:35833/jars/bigdl-SPARK_2.3-0.11.0-jar-with-dependencies.jar with timestamp 1603385597781
+2020-10-22 16:53:17 INFO  SparkContext:54 - Added file file:/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py at spark://bigdl.europe-west4-a.c.massive-network-289210.internal:35833/files/lenet5.py with timestamp 1603385597819
+2020-10-22 16:53:17 INFO  Utils:54 - Copying /home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py to /tmp/spark-26145208-bf5c-4728-9c82-109b28904f67/userFiles-c465bbb6-d44c-491c-b8de-bf60578de8cc/lenet5.py
+2020-10-22 16:53:17 INFO  SparkContext:54 - Added file file:///home/am72ghiassi/bd/spark/lib/bigdl-0.11.0-python-api.zip at spark://bigdl.europe-west4-a.c.massive-network-289210.internal:35833/files/bigdl-0.11.0-python-api.zip with timestamp 1603385597830
+2020-10-22 16:53:17 INFO  Utils:54 - Copying /home/am72ghiassi/bd/spark/lib/bigdl-0.11.0-python-api.zip to /tmp/spark-26145208-bf5c-4728-9c82-109b28904f67/userFiles-c465bbb6-d44c-491c-b8de-bf60578de8cc/bigdl-0.11.0-python-api.zip
+2020-10-22 16:53:17 ERROR SparkContext:91 - Error initializing SparkContext.
+org.apache.spark.SparkException: Invalid master URL: spark://:7077
+	at org.apache.spark.util.Utils$.extractHostPortFromSparkUrl(Utils.scala:2452)
+	at org.apache.spark.rpc.RpcAddress$.fromSparkURL(RpcAddress.scala:47)
+	at org.apache.spark.deploy.client.StandaloneAppClient$$anonfun$1.apply(StandaloneAppClient.scala:52)
+	at org.apache.spark.deploy.client.StandaloneAppClient$$anonfun$1.apply(StandaloneAppClient.scala:52)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
+	at scala.collection.mutable.ArrayOps$ofRef.foreach(ArrayOps.scala:186)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.mutable.ArrayOps$ofRef.map(ArrayOps.scala:186)
+	at org.apache.spark.deploy.client.StandaloneAppClient.<init>(StandaloneAppClient.scala:52)
+	at org.apache.spark.scheduler.cluster.StandaloneSchedulerBackend.start(StandaloneSchedulerBackend.scala:116)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.start(TaskSchedulerImpl.scala:164)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:500)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+2020-10-22 16:53:17 INFO  AbstractConnector:318 - Stopped Spark@67830fe3{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2020-10-22 16:53:17 INFO  SparkUI:54 - Stopped Spark web UI at http://bigdl.europe-west4-a.c.massive-network-289210.internal:4040
+2020-10-22 16:53:17 INFO  StandaloneSchedulerBackend:54 - Shutting down all executors
+2020-10-22 16:53:17 INFO  CoarseGrainedSchedulerBackend$DriverEndpoint:54 - Asking each executor to shut down
+2020-10-22 16:53:17 ERROR Utils:91 - Uncaught exception in thread Thread-6
+java.lang.NullPointerException
+	at org.apache.spark.scheduler.cluster.StandaloneSchedulerBackend.org$apache$spark$scheduler$cluster$StandaloneSchedulerBackend$$stop(StandaloneSchedulerBackend.scala:226)
+	at org.apache.spark.scheduler.cluster.StandaloneSchedulerBackend.stop(StandaloneSchedulerBackend.scala:124)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.stop(TaskSchedulerImpl.scala:508)
+	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:1755)
+	at org.apache.spark.SparkContext$$anonfun$stop$8.apply$mcV$sp(SparkContext.scala:1931)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1360)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:1930)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:579)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+2020-10-22 16:53:18 INFO  MapOutputTrackerMasterEndpoint:54 - MapOutputTrackerMasterEndpoint stopped!
+2020-10-22 16:53:18 INFO  MemoryStore:54 - MemoryStore cleared
+2020-10-22 16:53:18 INFO  BlockManager:54 - BlockManager stopped
+2020-10-22 16:53:18 INFO  BlockManagerMaster:54 - BlockManagerMaster stopped
+2020-10-22 16:53:18 WARN  MetricsSystem:66 - Stopping a MetricsSystem that is not running
+2020-10-22 16:53:18 INFO  OutputCommitCoordinator$OutputCommitCoordinatorEndpoint:54 - OutputCommitCoordinator stopped!
+2020-10-22 16:53:18 INFO  SparkContext:54 - Successfully stopped SparkContext
+Traceback (most recent call last):
+  File "/home/am72ghiassi/bd/quantitative_performance_evaluation_group_6/lenet5.py", line 66, in <module>
+    sc = SparkContext(appName="lenet5", conf=create_spark_conf())
+  File "/home/am72ghiassi/bd/spark/python/lib/pyspark.zip/pyspark/context.py", line 118, in __init__
+  File "/home/am72ghiassi/bd/spark/python/lib/pyspark.zip/pyspark/context.py", line 180, in _do_init
+  File "/home/am72ghiassi/bd/spark/python/lib/pyspark.zip/pyspark/context.py", line 282, in _initialize_context
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1525, in __call__
+  File "/home/am72ghiassi/bd/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: org.apache.spark.SparkException: Invalid master URL: spark://:7077
+	at org.apache.spark.util.Utils$.extractHostPortFromSparkUrl(Utils.scala:2452)
+	at org.apache.spark.rpc.RpcAddress$.fromSparkURL(RpcAddress.scala:47)
+	at org.apache.spark.deploy.client.StandaloneAppClient$$anonfun$1.apply(StandaloneAppClient.scala:52)
+	at org.apache.spark.deploy.client.StandaloneAppClient$$anonfun$1.apply(StandaloneAppClient.scala:52)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
+	at scala.collection.mutable.ArrayOps$ofRef.foreach(ArrayOps.scala:186)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.mutable.ArrayOps$ofRef.map(ArrayOps.scala:186)
+	at org.apache.spark.deploy.client.StandaloneAppClient.<init>(StandaloneAppClient.scala:52)
+	at org.apache.spark.scheduler.cluster.StandaloneSchedulerBackend.start(StandaloneSchedulerBackend.scala:116)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.start(TaskSchedulerImpl.scala:164)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:500)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+
+2020-10-22 16:53:18 INFO  ShutdownHookManager:54 - Shutdown hook called
+2020-10-22 16:53:18 INFO  ShutdownHookManager:54 - Deleting directory /tmp/localPyFiles-c07b4aeb-e16f-406a-ad31-3174e0c9d43c
+2020-10-22 16:53:18 INFO  ShutdownHookManager:54 - Deleting directory /tmp/spark-26145208-bf5c-4728-9c82-109b28904f67
+2020-10-22 16:53:18 INFO  ShutdownHookManager:54 - Deleting directory /tmp/spark-a39f1d3c-9ace-4b76-ad87-2734166cd6c2
