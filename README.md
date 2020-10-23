@@ -53,4 +53,4 @@ learningRateDecay:0.0002.
 
 **************************************************************************
 ### Extract results from output file (example)
-cat ./le_0_in_0_ks1_3_ks2_3.txt | grep Top1 | sed -r 's/.*Epoch\s(5|10|20).*accuracy: ([[:digit:]]\.[[:digit:]]*)\)/ \1\t\2 /' 
+cat ./le_0_in_0_ks1_3_ks2_3.txt | grep Top1 | grep -e 'Epoch 5\|Epoch 10\|Epoch 20' | sed -r 's/.*Epoch\s([[:digit:]]*).*accuracy: ([[:digit:]]\.[[:digit:]]*)\)/ \1\t\2 /' 
