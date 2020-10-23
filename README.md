@@ -50,3 +50,7 @@ For the other fixed fixed parameters, the current value:
 batchSize:128;
 learningRate:0.01;
 learningRateDecay:0.0002.
+
+**************************************************************************
+### Extract results from output file (example)
+cat ./le_0_in_0_ks1_3_ks2_3.txt | grep Top1 | sed -r 's/.*Epoch\s(5|10|20).*accuracy: ([[:digit:]]\.[[:digit:]]*)\)/ \1\t\2 /' 
