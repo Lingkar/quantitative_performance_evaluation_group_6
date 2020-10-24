@@ -65,7 +65,7 @@ The output is a pickle file such as "WSstat_alpha1+beta1+threshold0.1+ks18+ks28+
 To find the results in the pickle file:
 
 ```
-f = open('WSstat_alpha1+beta1+threshold0.1+ks18+ks28+epochs5+error_ration40.pickle', 'rb')
+f = open('WSstat_alpha1+beta1+threshold0.1+ks18+ks28+epochs5+error_ration40+image_noise40.pickle', 'rb')
 info = pickle.load(f, encoding="utf8")
 val_acc = info[14][0]
 train_acc = info[15][0]
