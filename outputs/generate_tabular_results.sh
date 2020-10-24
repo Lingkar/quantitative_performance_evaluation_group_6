@@ -1,6 +1,6 @@
 #/!/bin/bash
-echo -e "rep\tle\tin\tks1\tks2\tepochs\tacc\t" 
-for rep in 4
+echo -e "rep\tle\tin\tks1\tks2\tepochs\tacc" 
+for rep in 1 2 3 4 5 
 do
 for le in 0 20 40
 do
