@@ -56,12 +56,13 @@ def introduce_label_errors(input_labels, percentage):
     return labels, random_indexes
 
 
-def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio):
+def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise):
     alpha = alpha
     beta = beta
     thr = thr
     ks1 = ks1
     ks2 = ks2
+    image_noise = image_noise
     w_lim = 1
     c = 5
     batch_budget = 250
@@ -106,7 +107,10 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio):
     model_quality = clone_model(model)
     model_quality.set_weights(model.get_weights())
 
-    (X_train, y_train), (X_test, y_test) = mnist.load_data()
+    X_train = idx2numpy.convert_from_file("/le_0_in_%d/train-images-idx3-ubyte"%image_noise)
+    X_test = idx2numpy.convert_from_file("/le_0_in_%d/t10k-images-idx3-ubyte"%image_noise)
+    y_train = idx2numpy.convert_from_file("/le_0_in_%d/train-labels-idx1-ubyte"%image_noise)
+    y_test = idx2numpy.convert_from_file("/le_0_in_%d/t10k-labels-idx1-ubyte"%image_noise)
     X_train = X_train.reshape(-1, 28, 28, 1)
     X_test = X_test.reshape(-1, 28, 28, 1)
     X_train = X_train / 255.0
@@ -231,7 +235,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio):
 def main(args):
     assert args.dataset in ['mnist', 'cifar-10', 'cifar-100'], \
         "dataset parameter must be either 'mnist', 'cifar-10', 'cifar-100'"
-    train(args.dataset, args.alpha, args.beta, args.thr, args.ks1, args.ks2, args.epochs, args.error_ratio)
+    train(args.dataset, args.alpha, args.beta, args.thr, args.ks1, args.ks2, args.epochs, args.error_ratio, args.image_noise)
 
 
 
@@ -275,6 +279,11 @@ if __name__ == "__main__":
     parser.add_argument(
         '-er', '--error_ratio',
         help="ratio of label errors",
+        required=True, type=int
+    )
+    parser.add_argument(
+        '-in', '--image_noise',
+        help="ratio of image noise",
         required=True, type=int
     )
     args = parser.parse_args()
