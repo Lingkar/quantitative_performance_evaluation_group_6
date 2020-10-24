@@ -54,3 +54,22 @@ learningRateDecay:0.0002.
 **************************************************************************
 ### Extract results from output file (example)
 cat ./le_0_in_0_ks1_3_ks2_3.txt | grep Top1 | grep -e 'Epoch 5\|Epoch 10\|Epoch 20' | sed -r 's/.*Epoch\s([[:digit:]]*).*accuracy: ([[:digit:]]\.[[:digit:]]*)\)/ \1\t\2 /' 
+
+
+**************************************************************************
+For the use of /labeler/main.py, use the sample option(-ks1:kernelSize1, -ks2:kernelSize2, -e: epochs, -er: label_error_ratio)
+```
+python3 main.py -s mnist -a 1 -b 1 -t 0.1 -ks1 8 -ks2 8 -e 5 -er 40
+```
+The output is a pickle file such as "WSstat_alpha1+beta1+threshold0.1+ks18+ks28+epochs5+error_ration40.pickle".
+To find the results in the pickle file:
+
+```
+f = open('WSstat_alpha1+beta1+threshold0.1+ks18+ks28+epochs5+error_ration40.pickle', 'rb')
+info = pickle.load(f, encoding="utf8")
+val_acc = info[14][0]
+train_acc = info[15][0]
+val_loss = info[16][0]
+train_loss = info[17][0]
+time = info[18]
+```
