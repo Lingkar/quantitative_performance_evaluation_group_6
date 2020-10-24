@@ -14,3 +14,5 @@ data/train-labels-idx1-ubyte
 /**/*.log
 
 run/bigdl.log
+
+**/.ipynb_checkpoints/
