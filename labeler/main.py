@@ -59,7 +59,7 @@ def introduce_label_errors(input_labels, percentage):
 
 def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise):
     # Boolean to enable or disable labeler:
-    labeler = True
+    labeler = False
 
     # Here we import all the datasets once
     X_train_orig = idx2numpy.convert_from_file(
@@ -79,7 +79,6 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     y_train_clean = idx2numpy.convert_from_file(
         "../data/train-labels-idx1-ubyte"
     )
-    np_utils.to_categorical(y_train_clean, NUM_CLASSES[dataset])
 
     alpha = alpha
     beta = beta
@@ -101,10 +100,12 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     init_noise_ratio = 0
     data_ratio = 1.666666
     error_ratio = error_ratio
+
+    # This is just for the model fit init, and to set the validation set, in the homework the init_noise_ratio is set 0
     X_train, y_train, X_test, y_test, x_val, y_val, un_selected_index = get_data(X_train_clean, y_train_clean,
                                                                                  X_test_orig, y_test_orig, data_ratio)
-
-    print(y_val.shape)
+    # y_val and x_val shape changes based on the data_ratio used. Not sure yet what should be used.
+    # print(y_val.shape)
 
     image_shape = X_train.shape[1:]
     model = get_model(bnn, dataset, input_tensor=None, input_shape=image_shape, num_classes=NUM_CLASSES[dataset],
@@ -135,6 +136,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     model_quality = clone_model(model)
     model_quality.set_weights(model.get_weights())
 
+    # Set the train test sets to the original sets (with noise and label errors)
     X_train = X_train_orig
     X_test = X_test_orig
     y_train = y_train_orig
@@ -148,6 +150,8 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     X_train = (X_train - means)  # / std
     X_test = (X_test - means)  # / std
     # they are 2D originally in cifar
+
+    # Do exactly the same operation for the y_train clean as for the dirty y_train
     y_train = y_train.ravel()
     y_train_clean = y_train_clean.ravel()
     y_test = y_test.ravel()
@@ -185,9 +189,14 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
             model_quality.set_weights(model.get_weights())
 
         X_in_iteration = X_train[sub_un_selected_list]
+        # Set the y_true_iteretion to the subset of our y_train_clean data-set
         y_true_iteration = y_train_clean[sub_un_selected_list]
         y_noisy_iteration = y_train[sub_un_selected_list]
+
+        # This line is not used anymore as we have introduced the label-errors our selves in our datasets
         # y_noisy_iteration, noisy_idx = introduce_label_errors(y_train[sub_un_selected_list], error_ratio)
+
+
         y_predict, predict_prob, y_predict_label_second = BNN_label_predict(X_in_iteration, model, n_classes)
         clean_list, clean_pred_list, noisy_list, FN, TN, TP, FP, maxProbTP, maxProbFP = select_clean_noisy(
             X_in_iteration,
@@ -202,6 +211,8 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
         n = NUM_CLASSES[dataset]
         spent_s = 0
         spent_w = 0
+
+        # The labeler is needed in this class as here the active selection for the most incorrect labels is made
         inf_ind, inf = BNN_active_selection(predict_prob, noisy_list, al_method, num_al, labeler)
         loss = model_reliability(model, x_val, y_val)
 
@@ -231,8 +242,14 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
             y_noisy_iteration[oracle_list] = y_true_iteration[oracle_list]
 
         training_list = np.append(clean_list, oracle_list)
-        x_train_iteration = X_in_iteration[training_list]
-        y_train_iteration = y_noisy_iteration[training_list]
+
+        # I am not totally sure, but this selects the data it wants to train on don't do that if labeler false
+        if labeler:
+            x_train_iteration = X_in_iteration[training_list]
+            y_train_iteration = y_noisy_iteration[training_list]
+        else:
+            x_train_iteration = X_in_iteration
+            y_train_iteration = y_noisy_iteration
 
         print("train data shape:", x_train_iteration.shape)
         h_training_epoch_quality = model.fit_generator(
