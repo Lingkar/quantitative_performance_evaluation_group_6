@@ -399,8 +399,8 @@ def active_selection(predict_prob, al_method, num_al):
 
     return inf_ind
     
-def BNN_active_selection(predict_prob, dirty_list_quality, al_method, num_al):
-    if num_al > 0:
+def BNN_active_selection(predict_prob, dirty_list_quality, al_method, num_al, labeler):
+    if num_al > 0 and labeler:
       if (al_method == "unc"):
       # Choose the points with the lowest best class probability
         inf_ind = np.argsort(np.max(predict_prob[dirty_list_quality,:], axis = 1))[0:num_al]
@@ -419,7 +419,7 @@ def BNN_active_selection(predict_prob, dirty_list_quality, al_method, num_al):
       oracle_list = ((np.array(dirty_list_quality,dtype='int64'))[inf_ind]).tolist()
     else:
       oracle_list = []
-      inf_ind = []  
+      inf_ind = []
       inf = []
 
     return inf_ind, inf
