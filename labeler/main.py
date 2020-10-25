@@ -33,22 +33,40 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     labeler = True
 
     # Here we import all the datasets once
+    # X_train_orig = idx2numpy.convert_from_file(
+    #     "../data/experiments/repetition_1/le_%d_in_%d/train-images-idx3-ubyte" % (error_ratio, image_noise))
+    # y_train_orig = idx2numpy.convert_from_file(
+    #     "../data/experiments/repetition_1/le_%d_in_%d/train-labels-idx1-ubyte" % (error_ratio, image_noise))
+    # # These two can be taken from the arbitrary files as these are not changed.
+    # X_test_orig = idx2numpy.convert_from_file(
+    #     "../data/t10k-images-idx3-ubyte")
+    # y_test_orig = idx2numpy.convert_from_file(
+    #     "../data/t10k-labels-idx1-ubyte")
+    #
+    # # These are the clean datasets (Used for getting correct label and for validation set (maybe weird???))
+    # X_train_clean = idx2numpy.convert_from_file(
+    #     "../data/train-images-idx3-ubyte"
+    # )
+    # y_train_clean = idx2numpy.convert_from_file(
+    #     "../data/train-labels-idx1-ubyte"
+    # )
+
     X_train_orig = idx2numpy.convert_from_file(
-        "../data/experiments/repetition_1/le_%d_in_%d/train-images-idx3-ubyte" % (error_ratio, image_noise))
+        "/Users/sylvia/Downloads/train/train-images-idx3-ubyte")
     y_train_orig = idx2numpy.convert_from_file(
-        "../data/experiments/repetition_1/le_%d_in_%d/train-labels-idx1-ubyte" % (error_ratio, image_noise))
+        "/Users/sylvia/Downloads/train/train-labels-idx1-ubyte")
     # These two can be taken from the arbitrary files as these are not changed.
     X_test_orig = idx2numpy.convert_from_file(
-        "../data/t10k-images-idx3-ubyte")
+        "/Users/sylvia/Downloads/train/t10k-images-idx3-ubyte")
     y_test_orig = idx2numpy.convert_from_file(
-        "../data/t10k-labels-idx1-ubyte")
+        "/Users/sylvia/Downloads/train/t10k-labels-idx1-ubyte")
 
     # These are the clean datasets (Used for getting correct label and for validation set (maybe weird???))
     X_train_clean = idx2numpy.convert_from_file(
-        "../data/train-images-idx3-ubyte"
+        "/Users/sylvia/Downloads/clean/train-images-idx3-ubyte"
     )
     y_train_clean = idx2numpy.convert_from_file(
-        "../data/train-labels-idx1-ubyte"
+        "/Users/sylvia/Downloads/clean/train-labels-idx1-ubyte"
     )
 
     alpha = alpha
@@ -78,7 +96,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     # y_val and x_val shape changes based on the data_ratio used. Not sure yet what should be used.
     # print(y_val.shape)
     print("train shape for the pre-trained model:", X_train.shape)
-    print("length of un_selected_index:", un_selected_index)
+    print("length of un_selected_index:", len(un_selected_index))
 
     image_shape = X_train.shape[1:]
     model = get_model(bnn, dataset, input_tensor=None, input_shape=image_shape, num_classes=NUM_CLASSES[dataset],
@@ -141,7 +159,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     print("y_test", y_test.shape)
     n_classes = NUM_CLASSES[dataset]
     # training_steps indicate how many data used in each batch
-    training_steps = 60000
+    training_steps = 1000
     statistics_list = [[] for _ in range(21)]
     steps = int(np.ceil(len(un_selected_index) / float(training_steps)))
 
@@ -215,7 +233,11 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
 
         # Add the reserve_list to not reduce the training size
         # training_list = np.append(clean_list, oracle_list) # This line is not used anymore
-        training_list = clean_list+oracle_list+reserve_list
+        training_list = []
+        training_list.extend(clean_list)
+        training_list.extend(oracle_list)
+        training_list.extend(reserve_list)
+        print(len(training_list))
 
         # I am not totally sure, but this selects the data it wants to train on don't do that if labeler false
         if labeler:
@@ -243,13 +265,12 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     accc = h_quality.history['accuracy']
     val_losss = h_quality.history['val_loss']
     losss = h_quality.history['loss']
-    # The average accuracy cannot be calculated properly, so just collect all the accuracy from output
-    # for i in range(0, 10):
-    #     s_bnn = s_bnn + val_accc[-epochs_training * i - 1]
-    #     print(val_accc[-epochs_training * i - 1])
-    #
-    # average_valacc = s_bnn / 10
-    # print("Final Acc:", average_valacc)
+    for i in range(0, 10):
+        s_bnn = s_bnn + val_accc[-epochs_training * i - 1]
+        print(val_accc[-epochs_training * i - 1])
+
+    average_valacc = s_bnn / 10
+    print("Final Acc:", average_valacc)
     statistics_list[14].append(val_accc)
     statistics_list[15].append(accc)
     statistics_list[16].append(val_losss)
