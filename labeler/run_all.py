@@ -14,7 +14,7 @@ def saveToFile(labeler, ks, label_error, image_noise, epochs, count, accuracy, r
 if __name__ == "__main__":
     replication_set = 2
     labeler = [0, 1]
-    kernel_size = [3, 8]
+    kernel_size = [3]
     experiments = [[40, 40, 5], [40, 0, 5], [0, 40, 5], [0, 0, 5]]
     thr = 0.1
     alpha = 1.5
@@ -35,6 +35,7 @@ if __name__ == "__main__":
                     print(command)
                     stream = os.popen(command)
                     output = stream.read().split()
+                    # print(output)
                     accuracy = output[len(output) - 1]
                     # result_repetitions.append(accuracy)
                     # print(result_repetitions)

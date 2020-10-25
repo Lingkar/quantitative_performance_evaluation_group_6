@@ -266,11 +266,11 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise,
     #################################### save ########################################
     with open('WSstat_alpha' + str(alpha) + '+beta' + str(beta) + '+threshold' + str(thr) + '+ks1' + str(
             ks1) + '+ks2' + str(ks2) + '+epochs' + str(epochs) + '+error_ration' + str(
-            error_ratio) + '+image_noise' + str(image_noise) + '.pickle', 'wb') as file_pi:
+            error_ratio) + '+image_noise' + str(image_noise) + '+labeler' + str(labeler) + '+replication_set' + str(replication_set) + '.pickle', 'wb') as file_pi:
         pickle.dump(statistics_list, file_pi)
     ##################################################################################
 
-    return average_valacc
+    return statistics_list
 
 
 def main(args):
@@ -338,6 +338,6 @@ if __name__ == "__main__":
         required=True, type=int
     )
     args = parser.parse_args()
-    print(main(args))
+    main(args)
 
 
