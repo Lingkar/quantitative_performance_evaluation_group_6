@@ -61,8 +61,10 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise,
     ks2 = ks2
     image_noise = image_noise
     w_lim = 1
-    c = 5
-    batch_budget = 250
+    # The cost of the strong labeler
+    c = 2
+    # would cost only to use weak labeler
+    batch_budget = 1000
     bnn = 0
     al_method = 'bvssb'
     dynamic = 0
@@ -221,7 +223,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise,
         training_list = []
         training_list.extend(clean_list)
         training_list.extend(oracle_list)
-        training_list.extend(reserve_list)
+        # training_list.extend(reserve_list)
         print(len(training_list))
 
         # I am not totally sure, but this selects the data it wants to train on don't do that if labeler false
@@ -269,7 +271,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise,
             error_ratio) + '+image_noise' + str(image_noise) + '+labeler' + str(labeler) + '+replication_set' + str(replication_set) + '.pickle', 'wb') as file_pi:
         pickle.dump(statistics_list, file_pi)
     ##################################################################################
-
+    print(average_valacc)
     return statistics_list
 
 
