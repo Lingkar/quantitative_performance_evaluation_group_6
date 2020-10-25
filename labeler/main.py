@@ -28,7 +28,7 @@ NUM_CLASSES = {'mnist': 10, 'svhn': 10, 'cifar-10': 10, 'cifar-100': 100, 'celeb
 dataset = "mnist"
 
 
-def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise, labeler):
+def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise, labeler, replication_set):
     # Boolean to enable or disable labeler:
     if int(labeler) == 0:
         labeler = False
@@ -37,9 +37,9 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise,
 
     # Here we import all the datasets once
     X_train_orig = idx2numpy.convert_from_file(
-        "../data/experiments/repetition_1/le_%d_in_%d/train-images-idx3-ubyte" % (error_ratio, image_noise))
+        "../data/experiments/repetition_%d/le_%d_in_%d/train-images-idx3-ubyte" % (replication_set, error_ratio, image_noise))
     y_train_orig = idx2numpy.convert_from_file(
-        "../data/experiments/repetition_1/le_%d_in_%d/train-labels-idx1-ubyte" % (error_ratio, image_noise))
+        "../data/experiments/repetition_%d/le_%d_in_%d/train-labels-idx1-ubyte" % (replication_set, error_ratio, image_noise))
     # These two can be taken from the arbitrary files as these are not changed.
     X_test_orig = idx2numpy.convert_from_file(
         "../data/t10k-images-idx3-ubyte")
@@ -277,7 +277,7 @@ def main(args):
     assert args.dataset in ['mnist', 'cifar-10', 'cifar-100'], \
         "dataset parameter must be either 'mnist', 'cifar-10', 'cifar-100'"
     train(args.dataset, args.alpha, args.beta, args.thr, args.ks1, args.ks2, args.epochs, args.error_ratio,
-          args.image_noise, args.labeler)
+          args.image_noise, args.labeler, args.replication_set)
 
 
 if __name__ == "__main__":
@@ -330,6 +330,11 @@ if __name__ == "__main__":
     parser.add_argument(
         '-la', '--labeler',
         help="Set 0 or 1 in order to use labeler.",
+        required=True, type=int
+    )
+    parser.add_argument(
+        '-re', '--replication_set',
+        help="Set to the replication set which you want to use",
         required=True, type=int
     )
     args = parser.parse_args()

@@ -12,7 +12,7 @@ def saveToFile(labeler, ks, label_error, image_noise, epochs, count, accuracy):
 
 
 if __name__ == "__main__":
-    repetition = 1
+    replication_set = 2
     labeler = [0, 1]
     kernel_size = [3, 8]
     experiments = [[40, 40, 5], [40, 0, 5], [0, 40, 5]]
