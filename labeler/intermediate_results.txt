@@ -1,0 +1,17 @@
+
+Replication_set: 3Index: 0, labeler: 0, ks: 3, label_error: 40, image_noise: 40, epochs: 20
+0.9011600077152252
+Replication_set: 3Index: 1, labeler: 0, ks: 3, label_error: 40, image_noise: 0, epochs: 20
+0.9273900032043457
+Replication_set: 3Index: 2, labeler: 0, ks: 3, label_error: 0, image_noise: 40, epochs: 20
+0.9561100006103516
+Replication_set: 3Index: 3, labeler: 0, ks: 3, label_error: 0, image_noise: 0, epochs: 20
+0.9622199952602386
+Replication_set: 3Index: 4, labeler: 1, ks: 3, label_error: 40, image_noise: 40, epochs: 20
+0.9419899940490722
+Replication_set: 3Index: 5, labeler: 1, ks: 3, label_error: 40, image_noise: 0, epochs: 20
+0.9521600008010864
+Replication_set: 3Index: 6, labeler: 1, ks: 3, label_error: 0, image_noise: 40, epochs: 20
+0.9442399978637696
+Replication_set: 3Index: 7, labeler: 1, ks: 3, label_error: 0, image_noise: 0, epochs: 20
+0.9531700015068054
