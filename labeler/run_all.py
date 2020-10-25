@@ -15,7 +15,7 @@ if __name__ == "__main__":
     replication_set = 2
     labeler = [0, 1]
     kernel_size = [3, 8]
-    experiments = [[40, 40, 5], [40, 0, 5], [0, 40, 5]]
+    experiments = [[40, 40, 5], [40, 0, 5], [0, 40, 5], [0, 0, 5]]
     thr = 0.1
     alpha = 1.5
     beta = 1
