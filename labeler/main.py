@@ -28,38 +28,9 @@ NUM_CLASSES = {'mnist': 10, 'svhn': 10, 'cifar-10': 10, 'cifar-100': 100, 'celeb
 dataset = "mnist"
 
 
-def other_class(n_classes, current_class):
-    """
-    Returns a list of class indices excluding the class indexed by class_ind
-    :param nb_classes: number of classes in the task
-    :param class_ind: the class index to be omitted
-    :return: one random class that != class_ind
-    """
-    # print(current_class)
-    if current_class < 0 or current_class >= n_classes:
-        error_str = "class_ind must be within the range (0, nb_classes - 1)"
-        raise ValueError(error_str)
-
-    other_class_list = list(range(n_classes))
-    other_class_list.remove(current_class)
-    other_class = np.random.choice(other_class_list)
-    return other_class
-
-
-def introduce_label_errors(input_labels, percentage):
-    labels = np.array(input_labels, copy=True)
-    duplicate_amount = math.floor((len(labels) * percentage / 100))
-    random_indexes = random.sample(range(0, len(labels)), duplicate_amount)
-    for i in random_indexes:
-        labels[i] = np_utils.to_categorical(other_class(NUM_CLASSES[dataset], labels[i].argmax(axis=-1)),
-                                            NUM_CLASSES[dataset])
-
-    return labels, random_indexes
-
-
 def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise):
     # Boolean to enable or disable labeler:
-    labeler = False
+    labeler = True
 
     # Here we import all the datasets once
     X_train_orig = idx2numpy.convert_from_file(
@@ -106,6 +77,8 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
                                                                                  X_test_orig, y_test_orig, data_ratio)
     # y_val and x_val shape changes based on the data_ratio used. Not sure yet what should be used.
     # print(y_val.shape)
+    print("train shape for the pre-trained model:", X_train.shape)
+    print("length of un_selected_index:", un_selected_index)
 
     image_shape = X_train.shape[1:]
     model = get_model(bnn, dataset, input_tensor=None, input_shape=image_shape, num_classes=NUM_CLASSES[dataset],
@@ -168,7 +141,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     print("y_test", y_test.shape)
     n_classes = NUM_CLASSES[dataset]
     # training_steps indicate how many data used in each batch
-    training_steps = 1000
+    training_steps = 60000
     statistics_list = [[] for _ in range(21)]
     steps = int(np.ceil(len(un_selected_index) / float(training_steps)))
 
@@ -196,13 +169,11 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
         # This line is not used anymore as we have introduced the label-errors our selves in our datasets
         # y_noisy_iteration, noisy_idx = introduce_label_errors(y_train[sub_un_selected_list], error_ratio)
 
-
         y_predict, predict_prob, y_predict_label_second = BNN_label_predict(X_in_iteration, model, n_classes)
         clean_list, clean_pred_list, noisy_list, FN, TN, TP, FP, maxProbTP, maxProbFP = select_clean_noisy(
             X_in_iteration,
             y_noisy_iteration, y_true_iteration, y_predict, y_predict_label_second, predict_prob, model)
 
-        oracle_list = []
         if batch_budget > 0:
             num_al = len(noisy_list)
         print("batch_budget:", batch_budget)
@@ -216,7 +187,8 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
         inf_ind, inf = BNN_active_selection(predict_prob, noisy_list, al_method, num_al, labeler)
         loss = model_reliability(model, x_val, y_val)
 
-        strong_list, weak_list, spent_s, spent_w, first_yes, weak_questions, mean_w_q, unique_pic, true_label_rank = label_decider(
+        # reserve_list is also added in util.py
+        reserve_list, strong_list, weak_list, spent_s, spent_w, first_yes, weak_questions, mean_w_q, unique_pic, true_label_rank = label_decider(
             noisy_list, y_true_iteration, y_predict, predict_prob, n, inf_ind, inf, loss, batch_budget, spent_s,
             spent_w, w_lim, c, alpha, beta, thr)
 
@@ -241,12 +213,15 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
         if labeler:
             y_noisy_iteration[oracle_list] = y_true_iteration[oracle_list]
 
-        training_list = np.append(clean_list, oracle_list)
+        # Add the reserve_list to not reduce the training size
+        # training_list = np.append(clean_list, oracle_list) # This line is not used anymore
+        training_list = clean_list+oracle_list+reserve_list
 
         # I am not totally sure, but this selects the data it wants to train on don't do that if labeler false
         if labeler:
             x_train_iteration = X_in_iteration[training_list]
             y_train_iteration = y_noisy_iteration[training_list]
+
         else:
             x_train_iteration = X_in_iteration
             y_train_iteration = y_noisy_iteration
@@ -256,7 +231,7 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
             datagen.flow(x_train_iteration, y_train_iteration, batch_size=batch_size),
             steps_per_epoch=y_train_iteration.shape[0] // batch_size, epochs=epochs_training,
             validation_data=(X_test, y_test)
-            )
+        )
         h_quality = combine_result(h_quality, h_training_epoch_quality)
         if i != 0 and h_quality.history['val_accuracy'][-epochs_training - 1] - np.min(
                 h_quality.history['val_accuracy'][-epochs_training:]) > 0.2:
@@ -268,12 +243,13 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     accc = h_quality.history['accuracy']
     val_losss = h_quality.history['val_loss']
     losss = h_quality.history['loss']
-    for i in range(0, 10):
-        s_bnn = s_bnn + val_accc[-epochs_training * i - 1]
-        print(val_accc[-epochs_training * i - 1])
-
-    average_valacc = s_bnn / 10
-    print("Final Acc:", average_valacc)
+    # The average accuracy cannot be calculated properly, so just collect all the accuracy from output
+    # for i in range(0, 10):
+    #     s_bnn = s_bnn + val_accc[-epochs_training * i - 1]
+    #     print(val_accc[-epochs_training * i - 1])
+    #
+    # average_valacc = s_bnn / 10
+    # print("Final Acc:", average_valacc)
     statistics_list[14].append(val_accc)
     statistics_list[15].append(accc)
     statistics_list[16].append(val_losss)
@@ -287,7 +263,8 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
             error_ratio) + '+image_noise' + str(image_noise) + '.pickle', 'wb') as file_pi:
         pickle.dump(statistics_list, file_pi)
     ##################################################################################
-    return average_valacc
+
+    return statistics_list
 
 
 def main(args):
@@ -346,3 +323,5 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     main(args)
+
+
