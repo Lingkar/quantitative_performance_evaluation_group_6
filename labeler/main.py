@@ -33,40 +33,22 @@ def train(dataset, alpha, beta, thr, ks1, ks2, epochs, error_ratio, image_noise)
     labeler = True
 
     # Here we import all the datasets once
-    # X_train_orig = idx2numpy.convert_from_file(
-    #     "../data/experiments/repetition_1/le_%d_in_%d/train-images-idx3-ubyte" % (error_ratio, image_noise))
-    # y_train_orig = idx2numpy.convert_from_file(
-    #     "../data/experiments/repetition_1/le_%d_in_%d/train-labels-idx1-ubyte" % (error_ratio, image_noise))
-    # # These two can be taken from the arbitrary files as these are not changed.
-    # X_test_orig = idx2numpy.convert_from_file(
-    #     "../data/t10k-images-idx3-ubyte")
-    # y_test_orig = idx2numpy.convert_from_file(
-    #     "../data/t10k-labels-idx1-ubyte")
-    #
-    # # These are the clean datasets (Used for getting correct label and for validation set (maybe weird???))
-    # X_train_clean = idx2numpy.convert_from_file(
-    #     "../data/train-images-idx3-ubyte"
-    # )
-    # y_train_clean = idx2numpy.convert_from_file(
-    #     "../data/train-labels-idx1-ubyte"
-    # )
-
     X_train_orig = idx2numpy.convert_from_file(
-        "/Users/sylvia/Downloads/train/train-images-idx3-ubyte")
+        "../data/experiments/repetition_1/le_%d_in_%d/train-images-idx3-ubyte" % (error_ratio, image_noise))
     y_train_orig = idx2numpy.convert_from_file(
-        "/Users/sylvia/Downloads/train/train-labels-idx1-ubyte")
+        "../data/experiments/repetition_1/le_%d_in_%d/train-labels-idx1-ubyte" % (error_ratio, image_noise))
     # These two can be taken from the arbitrary files as these are not changed.
     X_test_orig = idx2numpy.convert_from_file(
-        "/Users/sylvia/Downloads/train/t10k-images-idx3-ubyte")
+        "../data/t10k-images-idx3-ubyte")
     y_test_orig = idx2numpy.convert_from_file(
-        "/Users/sylvia/Downloads/train/t10k-labels-idx1-ubyte")
-
+        "../data/t10k-labels-idx1-ubyte")
+    
     # These are the clean datasets (Used for getting correct label and for validation set (maybe weird???))
     X_train_clean = idx2numpy.convert_from_file(
-        "/Users/sylvia/Downloads/clean/train-images-idx3-ubyte"
+        "../data/train-images-idx3-ubyte"
     )
     y_train_clean = idx2numpy.convert_from_file(
-        "/Users/sylvia/Downloads/clean/train-labels-idx1-ubyte"
+        "../data/train-labels-idx1-ubyte"
     )
 
     alpha = alpha
